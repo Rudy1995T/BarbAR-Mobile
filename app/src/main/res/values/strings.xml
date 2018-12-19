@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">barbAR_SplashScreen</string>
+    <string name="barbar_logo">BarbAR Logo</string>
+    <string name="sign_up_message">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="user_name">User Name</string>
+    <string name="email_signup">Email</string>
+    <string name="password">Password</string>
+    <string name="shop_signup">Barber Shop Name</string>
+</resources>
