@@ -1,7 +1,6 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.animation.ObjectAnimator;
-import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,9 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText et;
+    private EditText userName;
+    private EditText password;
+    private EditText validationCode;
     private CheckBox checkBox;
 
     @Override
@@ -18,21 +19,19 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        et = findViewById(R.id.login_validation_code);
-        checkBox = findViewById(R.id.ifBarberCheckbox);
+        initViews();
 
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (checkBox.isChecked()) {
-                    et.setVisibility(View.VISIBLE);
+                    validationCode.setVisibility(View.VISIBLE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", 250f);
                     animation.setDuration(100);
                     animation.start();
-
                 } else {
-                    et.setVisibility(View.INVISIBLE);
+                    validationCode.setVisibility(View.INVISIBLE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", -50f);
                     animation.setDuration(100);
                     animation.start();
@@ -42,8 +41,19 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private boolean validBasicLogin() {
+        return true;
+    }
+
+    private void initViews() {
+        userName = findViewById(R.id.login_username);
+        password = findViewById(R.id.login_password);
+        validationCode = findViewById(R.id.login_validation_code);
+        checkBox = findViewById(R.id.ifBarberCheckbox);
+    }
+
     private void animateCheckBox(int visibility, float transition) {
-        et.setVisibility(visibility);
+        validationCode.setVisibility(visibility);
         ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", transition);
         animation.setDuration(100);
         animation.start();
