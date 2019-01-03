@@ -1,5 +1,6 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -83,7 +84,8 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(apprenticeCheckBox.isChecked()) {
                     if(matchBasicSignUp()) {
-                        Toast.makeText(getApplicationContext(), "Trainee to next activity", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(view.getContext(), TraineeMain.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
                     }
