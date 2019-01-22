@@ -86,6 +86,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
 
+                    if(response == null) {
+                        Toast.makeText(getApplicationContext(), "Result not found", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     String userName = response.getString("username");
                     String password = response.getString("password");
 
