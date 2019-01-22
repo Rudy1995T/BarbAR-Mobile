@@ -17,7 +17,7 @@ import java.util.List;
 public class ApprenticeHomeScreenActivity extends AppCompatActivity {
 
     private RecyclerView haircutsRecyclerView;
-    private haircutAdapter haircutsAdapter;
+    private HaircutAdapter haircutsAdapter;
     private List<Haircuts> haircuts;
 
     @Override
@@ -64,7 +64,7 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
         haircuts.add(haircut1);
         haircuts.add(haircut2);
 
-        haircutsAdapter = new haircutAdapter(haircuts, getApplicationContext());
+        haircutsAdapter = new HaircutAdapter(haircuts, getApplicationContext());
         haircutsRecyclerView.setAdapter(haircutsAdapter);
 
     }

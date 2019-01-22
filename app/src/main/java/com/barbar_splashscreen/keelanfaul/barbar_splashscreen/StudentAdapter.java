@@ -13,18 +13,18 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class studentAdapter extends RecyclerView.Adapter<studentAdapter.ViewHolder>{
+public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHolder>{
 
     private List<Students> students;
     private Context context;
 
-    public studentAdapter(List<Students> students, Context context) {
+    public StudentAdapter(List<Students> students, Context context) {
         this.students = students;
         this.context = context;
     }
 
     @Override
-    public studentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+    public StudentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.students_list_item, parent,false);
         return new ViewHolder(v);

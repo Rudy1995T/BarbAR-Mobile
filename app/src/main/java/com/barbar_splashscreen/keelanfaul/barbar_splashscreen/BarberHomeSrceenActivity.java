@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.content.Intent;
 import android.view.MenuItem;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.design.widget.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 public class BarberHomeSrceenActivity extends AppCompatActivity {
 
     private RecyclerView haircutsRecyclerView;
-    private haircutAdapter2 haircutsAdapter2;
+    private HaircutAdapter2 haircutsAdapter2;
     private List<Haircuts> haircuts;
 
     @Override
@@ -67,7 +66,7 @@ public class BarberHomeSrceenActivity extends AppCompatActivity {
         haircuts.add(haircut1);
         haircuts.add(haircut2);
 
-        haircutsAdapter2 = new haircutAdapter2(haircuts, getApplicationContext());
+        haircutsAdapter2 = new HaircutAdapter2(haircuts, getApplicationContext());
         haircutsRecyclerView.setAdapter(haircutsAdapter2);
 
     }

@@ -2,8 +2,6 @@ package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,18 +16,18 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 
-public class haircutAdapter extends RecyclerView.Adapter<haircutAdapter.ViewHolder>{
+public class HaircutAdapter extends RecyclerView.Adapter<HaircutAdapter.ViewHolder>{
 
     private List<Haircuts> haircuts;
     private Context context;
 
-    public haircutAdapter(List<Haircuts> haircuts, Context context) {
+    public HaircutAdapter(List<Haircuts> haircuts, Context context) {
         this.haircuts = haircuts;
         this.context = context;
     }
 
     @Override
-    public haircutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, final int i) {
+    public HaircutAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, final int i) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.haircuts_columnlist_item, parent,false);
         final ViewHolder vHolder = new ViewHolder(v);
@@ -42,22 +40,22 @@ public class haircutAdapter extends RecyclerView.Adapter<haircutAdapter.ViewHold
                 builderSingle.setTitle(haircuts.get(i).getHaircutName());
                 builderSingle.setTitle("Difficulty Level : Hard");
                 builderSingle.setNegativeButton("Go Back", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                        DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
 
-                    }
-                });
-        builderSingle.setPositiveButton("Start", new
-                DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+                builderSingle.setPositiveButton("Start", new
+                        DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
 
 
-                    }
-                });
+                            }
+                        });
 
 
             }

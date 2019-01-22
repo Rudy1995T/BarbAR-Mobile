@@ -62,7 +62,7 @@ public class BarberStudentsActivity extends AppCompatActivity {
         students.add(student1);
         students.add(student2);
 
-        studentsAdapter = new studentAdapter(students, getApplicationContext());
+        studentsAdapter = new StudentAdapter(students, getApplicationContext());
         studentsRecyclerView.setAdapter(studentsAdapter);
 
     }

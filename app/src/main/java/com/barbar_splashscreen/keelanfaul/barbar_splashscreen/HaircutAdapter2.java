@@ -14,21 +14,21 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 
-public class haircutAdapter2 extends RecyclerView.Adapter<haircutAdapter2.ViewHolder>{
+public class HaircutAdapter2 extends RecyclerView.Adapter<HaircutAdapter2.ViewHolder>{
 
     private List<Haircuts> haircuts;
     private Context context;
 
-    public haircutAdapter2(List<Haircuts> haircuts, Context context) {
+    public HaircutAdapter2(List<Haircuts> haircuts, Context context) {
         this.haircuts = haircuts;
         this.context = context;
     }
 
     @Override
-    public haircutAdapter2.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+    public HaircutAdapter2.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.haircuts_list_item, parent,false);
-        return new haircutAdapter2.ViewHolder(v);
+        return new HaircutAdapter2.ViewHolder(v);
     }
 
     @Override
