@@ -80,7 +80,8 @@
                     android:id="@+id/ifApprenticeCheckbox"
                     android:layout_width="126dp"
                     android:layout_height="60dp"
-                    android:checked="false"
+                    android:checked="true"
+                    android:clickable="false"
                     android:padding="12dp"
                     android:text="Apprentice"
                     android:theme="@style/CheckBoxTheme" />
@@ -94,15 +95,6 @@
                     android:text="Mentor"
                     android:theme="@style/CheckBoxTheme" />
             </LinearLayout>
-            <Button
-                android:id="@+id/signup-btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:background="@drawable/signupbutton"
-                android:paddingLeft="120dp"
-                android:paddingRight="120dp"
-                android:text="Sign Up"
-                android:textColor="#fff" />
 
             <LinearLayout
                 android:id="@+id/barber-address"
@@ -119,8 +111,8 @@
                     android:ems="15"
                     android:hint="Address Line1"
                     android:inputType="text"
-                    android:visibility="invisible"
-                    android:padding="11dp" />
+                    android:padding="11dp"
+                    android:visibility="gone" />
 
 
                 <EditText
@@ -131,8 +123,8 @@
                     android:ems="15"
                     android:hint="Address Line 2"
                     android:inputType="text"
-                    android:visibility="invisible"
-                    android:padding="11dp" />
+                    android:padding="11dp"
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/City"
@@ -142,29 +134,27 @@
                     android:ems="15"
                     android:hint="City"
                     android:inputType="text"
-                    android:visibility="invisible"
-                    android:padding="11dp" />
+                    android:padding="11dp"
+                    android:visibility="gone" />
 
 
                 <Spinner
                     android:id="@+id/county-spinner"
                     android:layout_width="wrap_content"
-                    android:visibility="invisible"
+                    android:layout_height="60dp"
 
-                    android:layout_height="60dp" />
+                    android:visibility="gone" />
 
             </LinearLayout>
 
             <Button
-                android:id="@+id/signup-btn2"
+                android:id="@+id/signup-btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:background="@drawable/signupbutton"
                 android:paddingLeft="120dp"
                 android:paddingRight="120dp"
-                android:layout_marginBottom="30dp"
                 android:text="Sign Up"
-                android:visibility="invisible"
                 android:textColor="#fff" />
 
         </LinearLayout>
