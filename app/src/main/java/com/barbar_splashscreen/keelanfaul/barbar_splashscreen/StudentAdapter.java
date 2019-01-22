@@ -51,8 +51,8 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.studentName);
-            circleImageView = (CircleImageView) itemView.findViewById((R.id.studentProfilePic));
+            textView = itemView.findViewById(R.id.studentName);
+            circleImageView = itemView.findViewById((R.id.studentProfilePic));
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
 

@@ -3,6 +3,7 @@ package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +11,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText firstNameTxt;
     private EditText surnameTxt;
+    private EditText usernameTxt;
     private EditText emailTxt;
     private EditText passwordTxt;
 
@@ -91,13 +102,50 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 } else {
                     if(matchMentorSignUp()) {
+                        User user = getUser();
+                        registerUser(user);
                         Toast.makeText(getApplicationContext(), "Send Barber to next activity", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Barber made mistake", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
+                }
         });
+    }
+
+    private void registerUser(final User user) {
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
+        final String SIGN_UP_URL = getString(R.string.sign_up_url);
+
+        JSONObject postUser = user.toJSON();
+
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SIGN_UP_URL, postUser,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("USER SIGN UP", error.toString());
+                }
+            });
+
+        queue.add(jsonObjectRequest);
+    }
+
+    private User getUser() {
+
+        String firstName = firstNameTxt.getText().toString();
+        String surname = surnameTxt.getText().toString();
+        String username = usernameTxt.getText().toString();
+        String email = emailTxt.getText().toString();
+        String password = passwordTxt.getText().toString();
+
+        return new User(firstName, surname, username, email, password, "");
     }
 
     private boolean matchRegex(EditText editText, String regex) {
@@ -119,6 +167,7 @@ public class SignUpActivity extends AppCompatActivity {
         final String NAME_REGEX = getString(R.string.name_regex);
         final String EMAIL_REGEX = getString(R.string.email_regex);
         final String PASSWORD_REGEX = getString(R.string.password_regex);
+        final String USERNAME_REGEX = getString(R.string.username_regex);
 
         boolean regexValidity = true;
         if(!matchRegex(firstNameTxt, NAME_REGEX)) {
@@ -128,6 +177,11 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(!matchRegex(surnameTxt, NAME_REGEX)) {
             surnameTxt.setError("Invalid Surname");
+            regexValidity = false;
+        }
+
+        if(!matchRegex(usernameTxt, USERNAME_REGEX)) {
+            usernameTxt.setError("Invalid Username");
             regexValidity = false;
         }
 
@@ -171,6 +225,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUpBtn = findViewById(R.id.signup_btn1);
         firstNameTxt = findViewById(R.id.signup_firstname);
         surnameTxt = findViewById(R.id.signup_surname);
+        usernameTxt = findViewById(R.id.signup_username);
         emailTxt = findViewById(R.id.signup_Email);
         passwordTxt = findViewById(R.id.signup_Password);
     }
