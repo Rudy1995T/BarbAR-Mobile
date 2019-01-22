@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(apprenticeCheckBox.isChecked()) {
                     if(matchBasicSignUp()) {
-                        Intent intent = new Intent(view.getContext(), TraineeMain.class);
+                        Intent intent = new Intent(view.getContext(), ApprenticeHomeScreenActivity.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();

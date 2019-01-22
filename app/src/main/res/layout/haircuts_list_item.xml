@@ -1,0 +1,43 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginRight="6dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/parent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/haircutImage"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/haircutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/haircutImage"
+                android:text="Haircut Name"
+                android:textColor="@color/colorBlack"
+                android:textSize="15dp"
+                />
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

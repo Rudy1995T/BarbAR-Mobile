@@ -16,10 +16,7 @@
     <!--No spaces, numeric or special characters-->
     <string name="name_regex">^[a-zA-Z]+</string>
     <string name="address_regex">[a-zA-Z0-9\\s\\,]*</string>
-    <string name="select_hair">Select Hair</string>
-    <string name="log_out">Log Out</string>
-    <string name="nav_haircuts">Haircuts</string>
-    <string name="nav_profile">Profile</string>
+
     <string-array name="county_arrays">
         <item>Antrim</item>
         <item>Armagh</item>

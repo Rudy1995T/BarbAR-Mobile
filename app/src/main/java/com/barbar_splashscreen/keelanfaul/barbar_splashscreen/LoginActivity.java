@@ -1,6 +1,8 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                     ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", 250f);
                     animation.setDuration(100);
                     animation.start();
+
                 } else {
                     validationCodeTxt.setVisibility(View.INVISIBLE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", -50f);
@@ -124,7 +127,16 @@ public class LoginActivity extends AppCompatActivity {
         validationCodeTxt = findViewById(R.id.login_validation_code);
         checkBox = findViewById(R.id.ifBarberCheckbox);
     }
+    public void sampleLogin(){
+        Intent intent;
+        if (checkBox.isChecked()) {
+            intent = new Intent(this, BarberHomeSrceenActivity.class);
 
+        } else {
+            intent = new Intent(this, ApprenticeHomeScreenActivity.class);
+        }
+        startActivity(intent);
+    }
     private void animateCheckBox(int visibility, float transition) {
         validationCodeTxt.setVisibility(visibility);
         ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", transition);
