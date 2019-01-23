@@ -106,57 +106,6 @@
                     android:theme="@style/CheckBoxTheme" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/barber-address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/AddressLine1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:ems="15"
-                    android:hint="Address Line1"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:visibility="gone" />
-
-
-                <EditText
-                    android:id="@+id/AddressLine2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:ems="15"
-                    android:hint="Address Line 2"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:visibility="gone" />
-
-                <EditText
-                    android:id="@+id/City"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:ems="15"
-                    android:hint="City"
-                    android:inputType="text"
-                    android:padding="11dp"
-                    android:visibility="gone" />
-
-
-                <Spinner
-                    android:id="@+id/county-spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
             <Button
                 android:id="@+id/signup-btn1"
                 android:layout_width="wrap_content"

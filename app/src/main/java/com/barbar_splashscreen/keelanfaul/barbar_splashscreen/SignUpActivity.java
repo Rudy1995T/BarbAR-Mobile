@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.regex.Matcher;
@@ -28,10 +29,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private CheckBox apprenticeCheckBox;
     private CheckBox mentorCheckBox;
-    private Spinner countySpinner;
-    private EditText addressLine1;
-    private EditText addressLine2;
-    private EditText city;
 
     private Button signUpBtn;
 
@@ -47,11 +44,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         initViews();
 
-        ArrayAdapter<String> countyAdapter = new ArrayAdapter<>(SignUpActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.county_arrays));
-        countyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        countySpinner.setAdapter(countyAdapter);
-
         signUpSelect();
         mentorBox();
         apprenticeBox();
@@ -64,10 +56,6 @@ public class SignUpActivity extends AppCompatActivity {
                 if (apprenticeCheckBox.isChecked()) {
                     mentorCheckBox.setChecked(false);
                     mentorCheckBox.setClickable(true);
-                    addressLine1.setVisibility(View.GONE);
-                    addressLine2.setVisibility(View.GONE);
-                    city.setVisibility(View.GONE);
-                    countySpinner.setVisibility(View.GONE);
                     apprenticeCheckBox.setClickable(false);
                 }
             }
@@ -81,9 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if(mentorCheckBox.isChecked()) {
                     mentorCheckBox.setClickable(false);
                     apprenticeCheckBox.setChecked(false);
-                    fieldVisibility(View.VISIBLE);
                     apprenticeCheckBox.setClickable(true);
-
                 }
             }
         });
@@ -93,30 +79,34 @@ public class SignUpActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(apprenticeCheckBox.isChecked()) {
-                    if(matchBasicSignUp()) {
-                        Intent intent = new Intent(view.getContext(), ApprenticeHomeScreenActivity.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
-                    }
+
+                if(matchBasicSignUp()) {
+                    final String apiURL = apprenticeCheckBox.isChecked() ? "trainee/traineeSignUp" : "barber/barberSignUp";
+                    registerUser(getUser(), apiURL);
+                    Intent intent = getIntentType();
+                    startActivity(intent);
                 } else {
-                    if(matchMentorSignUp()) {
-                        User user = getUser();
-                        registerUser(user);
-                        Toast.makeText(getApplicationContext(), "Send Barber to next activity", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Barber made mistake", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
                 }
-                }
+            }
         });
     }
 
-    private void registerUser(final User user) {
+    private Intent getIntentType() {
+        if(apprenticeCheckBox.isChecked()) {
+            return new Intent(this, ApprenticeHomeScreenActivity.class);
+        } else {
+            return new Intent(this, BarberHomeSrceenActivity.class);
+        }
+    }
+
+    private void registerUser(final User user, String apiURL) {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
-        final String SIGN_UP_URL = getString(R.string.sign_up_url);
+        String SIGN_UP_URL = getString(R.string.sign_up_url_body);
+
+
+        SIGN_UP_URL += apiURL;
 
         JSONObject postUser = user.toJSON();
 
@@ -124,7 +114,14 @@ public class SignUpActivity extends AppCompatActivity {
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
+                    try {
+                        if(response.getString("message").equals("success")) {
 
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             },
             new Response.ErrorListener() {
@@ -135,6 +132,23 @@ public class SignUpActivity extends AppCompatActivity {
             });
 
         queue.add(jsonObjectRequest);
+    }
+
+    private User parseJSON(JSONObject json) {
+        User user = null;
+        try {
+            String foundFirstName = json.getString("firstname");
+            String foundSurname = json.getString("surname");
+            String foundUsername = json.getString("username");
+            String foundEmail = json.getString("email");
+            String foundPassword = json.getString("password");
+            String foundAvatar = json.getString("avatar");
+
+            user = new User(foundFirstName, foundSurname, foundUsername, foundEmail, foundPassword, foundAvatar);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     private User getUser() {
@@ -154,13 +168,6 @@ public class SignUpActivity extends AppCompatActivity {
         Matcher matcher = pattern.matcher(txt);
 
         return matcher.matches();
-    }
-
-    private void fieldVisibility(int visibility) {
-        addressLine1.setVisibility(visibility);
-        addressLine2.setVisibility(visibility);
-        city.setVisibility(visibility);
-        countySpinner.setVisibility(visibility);
     }
 
     private boolean matchBasicSignUp() {
@@ -198,30 +205,9 @@ public class SignUpActivity extends AppCompatActivity {
         return regexValidity;
     }
 
-    private boolean matchMentorSignUp() {
-
-        final String ADDRESS_REGEX = getString(R.string.address_regex);
-        boolean regexValidity = true;
-        if(!matchRegex(addressLine1, ADDRESS_REGEX)) {
-            addressLine1.setError("Invalid address");
-            regexValidity = false;
-        }
-
-        if(!matchRegex(addressLine2, ADDRESS_REGEX)) {
-            addressLine2.setError("Invalid address");
-            regexValidity = false;
-        }
-
-        return matchBasicSignUp() && regexValidity;
-    }
-
     private void initViews() {
         apprenticeCheckBox = findViewById(R.id.ifApprenticeCheckbox);
         mentorCheckBox = findViewById(R.id.ifMentorCheckbox);
-        addressLine1 = findViewById(R.id.AddressLine1);
-        addressLine2 = findViewById(R.id.AddressLine2);
-        city = findViewById(R.id.City);
-        countySpinner = findViewById(R.id.county_spinner);
         signUpBtn = findViewById(R.id.signup_btn1);
         firstNameTxt = findViewById(R.id.signup_firstname);
         surnameTxt = findViewById(R.id.signup_surname);
