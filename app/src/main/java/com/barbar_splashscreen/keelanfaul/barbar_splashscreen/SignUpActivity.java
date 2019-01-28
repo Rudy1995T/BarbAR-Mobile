@@ -37,7 +37,6 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText usernameTxt;
     private EditText emailTxt;
     private EditText passwordTxt;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,105 +49,58 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void apprenticeBox() {
-        apprenticeCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (apprenticeCheckBox.isChecked()) {
-                    mentorCheckBox.setChecked(false);
-                    mentorCheckBox.setClickable(true);
-                    apprenticeCheckBox.setClickable(false);
-                }
+        apprenticeCheckBox.setOnClickListener(view -> {
+            if (apprenticeCheckBox.isChecked()) {
+                mentorCheckBox.setChecked(false);
+                mentorCheckBox.setClickable(true);
+                apprenticeCheckBox.setClickable(false);
             }
         });
     }
 
     private void mentorBox() {
-        mentorCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mentorCheckBox.isChecked()) {
-                    mentorCheckBox.setClickable(false);
-                    apprenticeCheckBox.setChecked(false);
-                    apprenticeCheckBox.setClickable(true);
-                }
+        mentorCheckBox.setOnClickListener(view -> {
+            if(mentorCheckBox.isChecked()) {
+                mentorCheckBox.setClickable(false);
+                apprenticeCheckBox.setChecked(false);
+                apprenticeCheckBox.setClickable(true);
             }
         });
     }
 
     private void signUpSelect() {
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(matchBasicSignUp()) {
-                    final String apiURL = apprenticeCheckBox.isChecked() ? "trainee/traineeSignUp" : "barber/barberSignUp";
-                    registerUser(getUser(), apiURL);
-                    Intent intent = getIntentType();
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
-                }
+        signUpBtn.setOnClickListener(view -> {
+            if(matchBasicSignUp()) {
+                final String apiURL = apprenticeCheckBox.isChecked() ? "trainee/signUp" : "barber/signUp";
+                registerUser(getUser(), apiURL);
+            } else {
+                Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private Intent getIntentType() {
-        if(apprenticeCheckBox.isChecked()) {
-            return new Intent(this, ApprenticeHomeScreenActivity.class);
-        } else {
-            return new Intent(this, BarberHomeSrceenActivity.class);
-        }
+        Class c = apprenticeCheckBox.isChecked() ? ApprenticeHomeScreenActivity.class : BarberHomeSrceenActivity.class;
+        return new Intent(this, c);
     }
 
     private void registerUser(final User user, String apiURL) {
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-
-        String SIGN_UP_URL = getString(R.string.sign_up_url_body);
-
-
-        SIGN_UP_URL += apiURL;
+        final String SIGN_UP_URL = getString(R.string.sign_up_url_body) + apiURL;
 
         JSONObject postUser = user.toJSON();
-
+        Log.d("regesterUser", "Invoked");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SIGN_UP_URL, postUser,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        if(response.getString("message").equals("success")) {
-
-
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+            response -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("sign_up_details", response.toString());
+                Intent intent = getIntentType();
+                intent.putExtras(bundle);
+                Log.d("USER DETAILS SIGN-UP", bundle.getString("sign_up_details"));
+                startActivity(intent);
             },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("USER SIGN UP", error.toString());
-                }
-            });
-
+            error -> Log.d("USER SIGN UP", error.toString()));
         queue.add(jsonObjectRequest);
-    }
-
-    private User parseJSON(JSONObject json) {
-        User user = null;
-        try {
-            String foundFirstName = json.getString("firstname");
-            String foundSurname = json.getString("surname");
-            String foundUsername = json.getString("username");
-            String foundEmail = json.getString("email");
-            String foundPassword = json.getString("password");
-            String foundAvatar = json.getString("avatar");
-
-            user = new User(foundFirstName, foundSurname, foundUsername, foundEmail, foundPassword, foundAvatar);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return user;
     }
 
     private User getUser() {
