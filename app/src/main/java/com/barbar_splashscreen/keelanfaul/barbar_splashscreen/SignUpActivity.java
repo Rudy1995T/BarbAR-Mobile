@@ -48,9 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
         mentorCheckBox.setOnClickListener(view -> {
             if(mentorCheckBox.isChecked()) {
                 mentorCheckBox.setClickable(false);
-                apprenticeCheckBox.setChecked(false);
-                apprenticeCheckBox.setClickable(true);
-            }
+            apprenticeCheckBox.setChecked(false);
+            apprenticeCheckBox.setClickable(true);
+        }
         });
     }
 
@@ -76,6 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         String postUser = user.jsonFormat();
 
+        // POST User details to API using thread
         new PostUser(getApplicationContext(), apprenticeCheckBox.isChecked()).execute(SIGN_UP_URL, postUser);
 
 
@@ -96,6 +97,10 @@ public class SignUpActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);*/
     }
 
+    /**
+     *
+     * @return
+     */
     private User getUser() {
 
         String firstName = firstNameTxt.getText().toString();
@@ -107,6 +112,12 @@ public class SignUpActivity extends AppCompatActivity {
         return new User(firstName, surname, username, email, password, "");
     }
 
+    /**
+     *
+     * @param editText
+     * @param regex
+     * @return
+     */
     private boolean matchRegex(EditText editText, String regex) {
         Pattern pattern = Pattern.compile(regex);
         String txt = editText.getText().toString();
@@ -115,6 +126,10 @@ public class SignUpActivity extends AppCompatActivity {
         return matcher.matches();
     }
 
+    /**
+     *
+     * @return
+     */
     private boolean matchBasicSignUp() {
         final String NAME_REGEX = getString(R.string.name_regex);
         final String EMAIL_REGEX = getString(R.string.email_regex);
@@ -152,6 +167,9 @@ public class SignUpActivity extends AppCompatActivity {
         return regexValidity;
     }
 
+    /**
+     *
+     */
     private void initViews() {
         apprenticeCheckBox = findViewById(R.id.ifApprenticeCheckbox);
         mentorCheckBox = findViewById(R.id.ifMentorCheckbox);
