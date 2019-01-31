@@ -31,7 +31,7 @@ public class User {
         this.password = password;
     }
 
-    public JSONObject toJSON() {
+    public String jsonFormat() {
         JSONObject userJSON = new JSONObject();
 
         try {
@@ -45,7 +45,7 @@ public class User {
             e.printStackTrace();
         }
 
-        return userJSON;
+        return userJSON.toString();
     }
 
     public String getFirstName() {

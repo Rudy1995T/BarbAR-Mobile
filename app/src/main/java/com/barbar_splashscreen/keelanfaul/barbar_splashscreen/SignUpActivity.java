@@ -1,26 +1,11 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText usernameTxt;
     private EditText emailTxt;
     private EditText passwordTxt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,17 +65,24 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private Intent getIntentType() {
-        Class c = apprenticeCheckBox.isChecked() ? ApprenticeHomeScreenActivity.class : BarberHomeSrceenActivity.class;
-        return new Intent(this, c);
-    }
-
+    /**
+     *
+     * @param user
+     * @param apiURL
+     */
     private void registerUser(final User user, String apiURL) {
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+
         final String SIGN_UP_URL = getString(R.string.sign_up_url_body) + apiURL;
 
-        JSONObject postUser = user.toJSON();
-        Log.d("regesterUser", "Invoked");
+        String postUser = user.jsonFormat();
+
+        new PostUser(getApplicationContext(), apprenticeCheckBox.isChecked()).execute(SIGN_UP_URL, postUser);
+
+
+
+        // VOLLEY METHOD for log in
+
+        /*Log.d("regesterUser", "Invoked");
         final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SIGN_UP_URL, postUser,
             response -> {
                 Bundle bundle = new Bundle();
@@ -100,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             },
             error -> Log.d("USER SIGN UP", error.toString()));
-        queue.add(jsonObjectRequest);
+        queue.add(jsonObjectRequest);*/
     }
 
     private User getUser() {
@@ -129,7 +122,9 @@ public class SignUpActivity extends AppCompatActivity {
         final String USERNAME_REGEX = getString(R.string.username_regex);
 
         boolean regexValidity = true;
-        if(!matchRegex(firstNameTxt, NAME_REGEX)) {
+
+        // COMMENT OUT FOR DEBUGGING
+        /*if(!matchRegex(firstNameTxt, NAME_REGEX)) {
             firstNameTxt.setError("Invalid First Name");
             regexValidity = false;
         }
@@ -152,7 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
             passwordTxt.setError("Invalid Password");
             regexValidity = false;
-        }
+        }*/
 
         return regexValidity;
     }
@@ -167,4 +162,6 @@ public class SignUpActivity extends AppCompatActivity {
         emailTxt = findViewById(R.id.signup_Email);
         passwordTxt = findViewById(R.id.signup_Password);
     }
+
+
 }

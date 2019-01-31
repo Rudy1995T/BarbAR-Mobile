@@ -10,16 +10,13 @@ import android.view.Menu;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
-import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-public class BarberHomeSrceenActivity extends AppCompatActivity {
+public class BarberHomeScreenActivity extends AppCompatActivity {
 
     private RecyclerView haircutsRecyclerView;
     private HaircutAdapter2 haircutsAdapter2;
@@ -48,15 +45,14 @@ public class BarberHomeSrceenActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.ic_haircuts:
-                        Intent intent1 = new Intent(BarberHomeSrceenActivity.this, MainActivity.class);
+                        Intent intent1 = new Intent(BarberHomeScreenActivity.this, MainActivity.class);
                         startActivity(intent1);
                         finish();
-
                         break;
                     case R.id.ic_students:
-                        Intent intent2 = new Intent(BarberHomeSrceenActivity.this, BarberStudentsActivity.class);
+                        Intent intent2 = new Intent(BarberHomeScreenActivity.this, BarberStudentsActivity.class);
                         startActivity(intent2);
                         break;
                 }
@@ -67,7 +63,7 @@ public class BarberHomeSrceenActivity extends AppCompatActivity {
 
     }
 
-    private void addSampleHaircutsToRecyclerView(){
+    private void addSampleHaircutsToRecyclerView() {
         Haircuts haircut1 = new Haircuts(1, "High Fade", "lorem Ipsum,Lorem Ipsum", "https://i.pinimg.com/originals/42/ec/a7/42eca7539638b6543fdc0740b628e1ea.jpg");
         Haircuts haircut2 = new Haircuts(2, "Medium Fade", "lorem Ipsum,Lorem Ipsum", "https://www.styleinterest.com/wp-content/uploads/2018/06/85110618-mid-fade-haircuts-.jpg");
 
