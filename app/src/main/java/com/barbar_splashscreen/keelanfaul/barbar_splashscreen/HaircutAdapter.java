@@ -60,9 +60,6 @@ public class HaircutAdapter extends RecyclerView.Adapter<HaircutAdapter.ViewHold
 
             }
         });
-
-
-
         return vHolder;
     }
 

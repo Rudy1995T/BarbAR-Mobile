@@ -1,6 +1,7 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ApprenticeHomeScreenActivity extends AppCompatActivity {
@@ -19,18 +27,32 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
     private RecyclerView haircutsRecyclerView;
     private HaircutAdapter haircutsAdapter;
     private List<Haircuts> haircuts;
+    SessionManager sessionManager;
+    private TextView logoutButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apprentice_home_screen);
 
+        logoutButton = findViewById(R.id.logoutButton);
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+        HashMap<String,String> user = sessionManager.getUserDetails();
+
         haircutsRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewHaircuts);
         haircutsRecyclerView.setHasFixedSize(true);
         haircutsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
-
         haircuts = new ArrayList<>();
         addSampleHaircutsToRecyclerView();
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.logout();
+            }
+        });
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavBar);
