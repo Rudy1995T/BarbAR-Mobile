@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent;
         if (checkBox.isChecked()) {
-          intent = new Intent(this, BarberHomeSrceenActivity.class);
+          intent = new Intent(this, BarberHomeScreenActivity.class);
 
         } else {
             sendRequest(userName,password);
@@ -140,7 +141,6 @@ public class LoginActivity extends AppCompatActivity {
         }
       startActivity(intent);
     }
-
     private void animateCheckBox(int visibility, float transition) {
         validationCodeTxt.setVisibility(visibility);
         ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", transition);

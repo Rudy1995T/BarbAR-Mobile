@@ -41,7 +41,7 @@ public class BarberStudentsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.ic_haircuts:
-                        Intent intent1 = new Intent(BarberStudentsActivity.this, BarberHomeSrceenActivity.class);
+                        Intent intent1 = new Intent(BarberStudentsActivity.this, BarberHomeScreenActivity.class);
                         startActivity(intent1);
                         finish();
 

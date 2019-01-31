@@ -10,45 +10,16 @@
 
     <string name="country_prompt">Choose a country</string>
 
+
+
+    <!--No spaces, numeric or special characters-->
+    <!--REGEX STRINGS-->
+    <string name="name_regex">^[a-zA-Z]+</string>
+    <string name="username_regex">^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$</string>
     <string name="password_regex">((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15})</string>
     <string name="email_regex">(\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,6})</string>
 
-    <!--No spaces, numeric or special characters-->
-    <string name="name_regex">^[a-zA-Z]+</string>
-    <string name="address_regex">[a-zA-Z0-9\\s\\,]*</string>
+    <!--URL's-->
+    <string name="sign_up_url_body">https://barbarservice.azurewebsites.net/api/</string>
 
-    <string-array name="county_arrays">
-        <item>Antrim</item>
-        <item>Armagh</item>
-        <item>Carlow</item>
-        <item>Cavan</item>
-        <item>Clare</item>
-        <item>Cork</item>
-        <item>Derry</item>
-        <item>Donegal</item>
-        <item>Down</item>
-        <item>Dublin</item>
-        <item>Fermanagh</item>
-        <item>Galway</item>
-        <item>Kerry</item>
-        <item>Kildare</item>
-        <item>Kilkenny</item>
-        <item>Laois</item>
-        <item>Leitrim</item>
-        <item>Limerick</item>
-        <item>Longford</item>
-        <item>Louth</item>
-        <item>Mayo</item>
-        <item>Meath</item>
-        <item>Monaghan</item>
-        <item>Offaly</item>
-        <item>Roscommon</item>
-        <item>Sligo</item>
-        <item>Tipperary</item>
-        <item>Tyrone</item>
-        <item>Waterford</item>
-        <item>Westmeath</item>
-        <item>Wexford</item>
-        <item>Wicklow</item>
-    </string-array>
 </resources>
