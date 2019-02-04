@@ -13,6 +13,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="15dp"
         android:text="Logout"
+        android:id="@+id/logout_button"
         android:textColor="@color/colorMainGrey"
         android:textSize="20dp" />
 
