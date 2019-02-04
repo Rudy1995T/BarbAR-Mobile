@@ -6,35 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ApprenticeHomeScreenActivity">
 
-    <RelativeLayout
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Logout"
-            android:textColor="@color/colorMainGrey"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/logoutButton"
-            android:layout_marginTop="5dp"
-            android:text="Select a Hairstyle"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/colorBlack"
-            android:textSize="14dp" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:text="Logout"
+        android:textColor="@color/colorMainGrey"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
         >
 

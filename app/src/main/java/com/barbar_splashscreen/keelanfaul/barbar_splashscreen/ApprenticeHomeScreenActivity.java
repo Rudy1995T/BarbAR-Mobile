@@ -41,6 +41,7 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
         haircutsRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewHaircuts);
         haircutsRecyclerView.setHasFixedSize(true);
         haircutsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
+
         haircuts = new ArrayList<>();
         addSampleHaircutsToRecyclerView();
 

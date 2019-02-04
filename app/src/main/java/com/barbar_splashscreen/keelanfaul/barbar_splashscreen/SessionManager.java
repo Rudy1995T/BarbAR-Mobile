@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import java.util.HashMap;
 
 public class SessionManager {
+
     SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editor;
     public Context context;
@@ -35,6 +36,7 @@ public class SessionManager {
     public boolean isLoggin(){
         return sharedPreferences.getBoolean(LOGIN, false);
     }
+
     public void checkLogin(){
         if(!isLoggin()){
             Intent i = new Intent(context, LoginActivity.class);

@@ -15,8 +15,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 public class PostUser extends AsyncTask <String, Void, JSONObject> {
@@ -32,15 +34,7 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
 
     @Override
     protected JSONObject doInBackground(String... strings) {
-        JSONObject json = null;
-
-        try {
-            String message = getStream(strings[0], strings[1]);
-            json = new JSONObject(message);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return json;
+        return readStream(strings[0], strings[1]);
     }
 
     @Override
@@ -63,9 +57,32 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
         context.startActivity(intent);
     }
 
-    private String getStream(final String LOGIN_URL, String json) {
+    private JSONObject readStream(final String LOGIN_URL, String json) {
 
-        String response = null;
+        JSONObject response = null;
+        try {
+
+            InputStream inputStream = getStream(LOGIN_URL, json);
+
+//            Log.d("INPUT STREAM", inputStream.toString());
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            response = new JSONObject(reader.readLine());
+        } catch (MalformedURLException e) {
+            Log.e("getStream", e.toString(), e);
+        } catch (IOException e) {
+            Log.e("getStream", e.toString(), e);
+        } catch (JSONException e) {
+            Log.e("getStream", e.toString(), e);
+        }
+
+        return response;
+    }
+
+    private InputStream getStream(final String LOGIN_URL, String json) {
+
+        InputStream inputStream = null;
         try {
             URL url = new URL(LOGIN_URL);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -80,31 +97,20 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
 
             urlConnection.connect();
 
-            InputStream inputStream = urlConnection.getInputStream();
+            Log.d("RESPONSE", "" + urlConnection.getResponseCode());
 
-            Log.d("INPUT STREAM", inputStream.toString());
-
-            if(inputStream == null) return null;
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
-            StringBuffer stringBuffer = new StringBuffer();
-
-            String line;
-            while((line = reader.readLine()) != null) {
-                Log.d("BUFFER", line);
-                stringBuffer.append(line);
-            }
-
-            response = stringBuffer.toString();
-
+            inputStream = urlConnection.getInputStream();
+        } catch (UnsupportedEncodingException e) {
+            Log.e("getStream", e.toString(), e);
         } catch (MalformedURLException e) {
-            Log.d("getStream", e.toString());
+            Log.e("getStream", e.toString(), e);
+        } catch (ProtocolException e) {
+            Log.e("getStream", e.toString(), e);
         } catch (IOException e) {
-            Log.d("getStream", e.toString());
+            Log.e("getStream", e.toString(), e);
         }
 
-        return response;
+        return inputStream;
     }
 
 }
