@@ -69,7 +69,6 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
             response = new JSONObject(reader.readLine());
-            
         } catch (MalformedURLException e) {
             Log.e("getStream", e.toString(), e);
         } catch (IOException e) {
