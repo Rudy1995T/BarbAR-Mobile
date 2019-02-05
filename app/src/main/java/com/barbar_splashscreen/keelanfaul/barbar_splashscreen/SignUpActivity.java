@@ -77,23 +77,6 @@ public class SignUpActivity extends AppCompatActivity {
         String postUser = user.jsonFormat();
 
         new PostUser(getApplicationContext(), apprenticeCheckBox.isChecked()).execute(SIGN_UP_URL, postUser);
-
-
-
-        // VOLLEY METHOD for log in
-
-        /*Log.d("regesterUser", "Invoked");
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SIGN_UP_URL, postUser,
-            response -> {
-                Bundle bundle = new Bundle();
-                bundle.putString("sign_up_details", response.toString());
-                Intent intent = getIntentType();
-                intent.putExtras(bundle);
-                Log.d("USER DETAILS SIGN-UP", bundle.getString("sign_up_details"));
-                startActivity(intent);
-            },
-            error -> Log.d("USER SIGN UP", error.toString()));
-        queue.add(jsonObjectRequest);*/
     }
 
     private User getUser() {
