@@ -33,7 +33,7 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apprentice_home_screen);
 
-        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton = findViewById(R.id.logout_button);
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         HashMap<String,String> user = sessionManager.getUserDetails();
