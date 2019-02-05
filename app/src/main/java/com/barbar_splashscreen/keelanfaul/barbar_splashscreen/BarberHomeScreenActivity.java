@@ -26,9 +26,6 @@ public class BarberHomeScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barber_home_srceen);
-        Bundle bundle = getIntent().getExtras();
-
-        Log.d("BARBER BUNDLE", bundle.getString("sign_up_details"));
 
         haircutsRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewHaircuts);
         haircutsRecyclerView.setHasFixedSize(true);

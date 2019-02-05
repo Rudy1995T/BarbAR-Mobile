@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText validationCodeTxt;
     private CheckBox checkBox;
     private Button loginBtn;
-    SessionManager sessionManager;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
