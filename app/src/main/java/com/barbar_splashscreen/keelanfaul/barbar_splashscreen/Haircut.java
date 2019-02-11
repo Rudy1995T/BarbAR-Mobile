@@ -1,18 +1,17 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
-public class Haircuts {
+public class Haircut {
     private int haircut_id;
     private String haircutName;
     private String haircutDescription;
     private String haircutImageURL;
 
-    public Haircuts(int haircut_id, String haircutName, String haircutDescription, String haircutImageURL) {
+    public Haircut(int haircut_id, String haircutName, String haircutDescription, String haircutImageURL) {
         this.haircut_id = haircut_id;
         this.haircutName = haircutName;
         this.haircutDescription = haircutDescription;
         this.haircutImageURL = haircutImageURL;
     }
-
 
     public int getHaircut_id() {
         return haircut_id;

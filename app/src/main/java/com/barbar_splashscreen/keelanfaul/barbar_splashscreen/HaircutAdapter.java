@@ -18,10 +18,10 @@ import java.util.List;
 
 public class HaircutAdapter extends RecyclerView.Adapter<HaircutAdapter.ViewHolder>{
 
-    private List<Haircuts> haircuts;
+    private List<Haircut> haircuts;
     private Context context;
 
-    public HaircutAdapter(List<Haircuts> haircuts, Context context) {
+    public HaircutAdapter(List<Haircut> haircuts, Context context) {
         this.haircuts = haircuts;
         this.context = context;
     }
@@ -68,7 +68,7 @@ public class HaircutAdapter extends RecyclerView.Adapter<HaircutAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int i) {
-        final Haircuts haircut = haircuts.get(i);
+        final Haircut haircut = haircuts.get(i);
         holder.textView.setText(haircut.getHaircutName());
         Picasso.get().load(haircut.getHaircutImageURL()).placeholder(R.drawable.userlogo).into(holder.imageView);
 

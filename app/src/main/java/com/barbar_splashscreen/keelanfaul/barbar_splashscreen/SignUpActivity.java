@@ -2,6 +2,7 @@ package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -95,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
         String txt = editText.getText().toString();
         Matcher matcher = pattern.matcher(txt);
 
-        return matcher.matches();
+        return matcher.matches() && !TextUtils.isEmpty(editText.getText().toString());
     }
 
     private boolean matchBasicSignUp() {
@@ -107,30 +108,30 @@ public class SignUpActivity extends AppCompatActivity {
         boolean regexValidity = true;
 
         // COMMENT OUT FOR DEBUGGING
-        /*if(!matchRegex(firstNameTxt, NAME_REGEX)) {
+        if(/*!matchRegex(firstNameTxt, NAME_REGEX) ||*/ TextUtils.isEmpty(firstNameTxt.getText().toString())) {
             firstNameTxt.setError("Invalid First Name");
             regexValidity = false;
         }
 
-        if(!matchRegex(surnameTxt, NAME_REGEX)) {
+        if(/*!matchRegex(surnameTxt, NAME_REGEX) || */TextUtils.isEmpty(surnameTxt.getText().toString())) {
             surnameTxt.setError("Invalid Surname");
             regexValidity = false;
         }
 
-        if(!matchRegex(usernameTxt, USERNAME_REGEX)) {
+        if(/*!matchRegex(usernameTxt, USERNAME_REGEX) || */TextUtils.isEmpty(usernameTxt.getText().toString())) {
             usernameTxt.setError("Invalid Username");
             regexValidity = false;
         }
 
-        if(!matchRegex(emailTxt, EMAIL_REGEX)) {
+        if(/*!matchRegex(emailTxt, EMAIL_REGEX) || */TextUtils.isEmpty(emailTxt.getText().toString())) {
             emailTxt.setError("Invalid Email");
             regexValidity = false;
         }
 
-        if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
+        if(/*!matchRegex(passwordTxt, PASSWORD_REGEX) || */TextUtils.isEmpty(passwordTxt.getText().toString())) {
             passwordTxt.setError("Invalid Password");
             regexValidity = false;
-        }*/
+        }
 
         return regexValidity;
     }
