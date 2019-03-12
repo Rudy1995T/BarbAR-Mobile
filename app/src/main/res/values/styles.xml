@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:background">@color/colorWhite</item>
@@ -13,5 +13,9 @@
     <style name="CheckBoxTheme" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">#D83C3C</item>
         <item name="colorControlActivated">#D83C3C</item>
+    </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorMainGrey</item>
+        <item name="colorControlActivated">@color/colorMainRed</item>
     </style>
 </resources>

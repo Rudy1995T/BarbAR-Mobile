@@ -1,92 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:id="@+id/relativeLayout">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="211dp"
         android:layout_height="228dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
 
         android:contentDescription="BarbAR Logo"
-        android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:src="@drawable/logo" />
 
     <EditText
         android:id="@+id/login_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="339dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageView"
         android:backgroundTint="@color/colorPrimary"
         android:ems="15"
+        android:layout_marginTop="100dp"
         android:hint="Username"
         android:inputType="text"
-        android:padding="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:padding="11dp" />
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="281dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="15"
+        android:layout_below="@+id/login_username"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:padding="11dp" />
 
-    <EditText
-        android:id="@+id/login_validation_code"
+
+    <TextView
+        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="139dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:ems="15"
-        android:hint="Barber Validation Code"
-        android:inputType="text"
-        android:visibility="invisible"
-        android:padding="11dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_below="@+id/login_password"
+        android:layout_alignEnd="@+id/login_password"
+        android:text="Forgot Password?"
+        android:textColor="@color/colorMainRed"
+        android:textSize="15dp"
+        android:textStyle="italic" />
 
     <CheckBox
         android:id="@+id/ifBarberCheckbox"
         android:layout_width="126dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="229dp"
+        android:layout_alignStart="@+id/login_password"
+        android:layout_below="@+id/forgot_password"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="10dp"
         android:checked="false"
         android:padding="12dp"
         android:text="Barber"
-        android:theme="@style/CheckBoxTheme"
-        app:layout_constraintStart_toStartOf="@+id/login_password"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:theme="@style/CheckBoxTheme" />
+    <EditText
+        android:id="@+id/login_validation_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ifBarberCheckbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:ems="15"
+        android:hint="Barber Validation Code"
+        android:inputType="text"
+        android:padding="11dp"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
+        android:layout_below="@+id/ifBarberCheckbox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:background="@drawable/signupbutton"
         android:paddingLeft="120dp"
         android:paddingRight="120dp"
         android:text="Log In"
-        android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:textColor="#fff" />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

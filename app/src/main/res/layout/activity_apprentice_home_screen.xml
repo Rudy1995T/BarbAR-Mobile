@@ -7,6 +7,8 @@
     tools:context=".ApprenticeHomeScreenActivity">
 
 
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,12 +17,26 @@
         android:text="Logout"
         android:id="@+id/logout_button"
         android:textColor="@color/colorMainGrey"
-        android:textSize="20dp" />
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="15dp"
+        android:layout_below="@+id/logout_button"
+        android:gravity="center_horizontal"
+        android:text="Select a Hairstyle"
+        android:id="@+id/homeScreen"
+        android:textColor="@color/colorBlack"
+        android:textSize="17dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_below="@+id/homeScreen"
+        android:layout_marginTop="70dp"
+        android:id="@+id/hairstyleList"
         android:orientation="vertical"
         >
 
@@ -32,10 +48,13 @@
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom">
+
+
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottomNavBar"
@@ -48,6 +67,10 @@
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"
             app:menu="@menu/bottom_navigation_menu2" />
+
+
     </RelativeLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

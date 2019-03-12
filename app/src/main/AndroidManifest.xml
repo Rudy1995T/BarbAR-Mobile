@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -29,8 +29,12 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".BarberHomeScreenActivity" />
         <activity android:name=".BarberStudentsActivity" />
-        <activity android:name=".ApprenticeHomeScreenActivity"/>
-        <activity android:name=".ApprenticeProfileActivity"/>
+        <activity android:name=".ApprenticeHomeScreenActivity" />
+        <activity android:name=".ApprenticeProfileActivity" />
+        <activity android:name=".ForgetPasswordActivity" />
+        <activity android:name=".StartHaircutActivity" />
+        <activity android:name=".ShowHaircutCodeActivity" />
+        <activity android:name=".FeedBackActivity"></activity>
     </application>
 
 </manifest>

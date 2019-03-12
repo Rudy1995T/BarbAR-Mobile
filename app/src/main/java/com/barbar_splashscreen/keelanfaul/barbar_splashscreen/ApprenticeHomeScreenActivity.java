@@ -37,6 +37,7 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
     SessionManager sessionManager;
     private TextView logoutButton;
 
+
     private final String TAG = ApprenticeHomeScreenActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {

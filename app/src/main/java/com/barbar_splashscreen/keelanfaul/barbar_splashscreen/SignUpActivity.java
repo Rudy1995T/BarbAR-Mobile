@@ -1,5 +1,6 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,7 +30,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initViews();
-
         signUpSelect();
         mentorBox();
         apprenticeBox();
@@ -60,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
             if(matchBasicSignUp()) {
                 final String apiURL = apprenticeCheckBox.isChecked() ? "trainee/signUp" : "barber/signUp";
                 registerUser(getUser(), apiURL);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
             }

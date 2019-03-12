@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowHaircutCodeActivity">
+
+    <TextView
+        android:id="@+id/hCodeTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center_horizontal"
+        android:text="Haircut Code"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorBlack"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/hCodeTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hCodeTextView1"
+        android:layout_centerHorizontal="true"
+        android:text="Enter this code in the Hololens App to start Haircut"
+        android:textColor="@color/colorMainGrey"
+        android:textSize="12dp" />
+
+
+</RelativeLayout>

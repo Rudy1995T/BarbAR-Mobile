@@ -12,6 +12,7 @@
         android:layout_marginTop="40dp">
 
         <LinearLayout
+            android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -47,13 +48,37 @@
                     android:layout_weight="1"
                     android:text="email"
                     android:textSize="15dp" />
+
             </LinearLayout>
-
-
-
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/historyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:textColor="@color/colorBlack"
+            android:layout_weight="1"
+            android:layout_below="@+id/layout1"
+            android:layout_marginLeft="15dp"
+            android:text="Haircut's History"
+            android:textSize="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/historyTextView"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewHistory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
