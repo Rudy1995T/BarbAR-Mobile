@@ -91,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
         return new User(firstName, surname, username, email, password, "");
     }
 
-    private boolean matchRegex(EditText editText, String regex) {
+    protected boolean matchRegex(EditText editText, String regex) {
         Pattern pattern = Pattern.compile(regex);
         String txt = editText.getText().toString();
         Matcher matcher = pattern.matcher(txt);
@@ -99,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
         return matcher.matches() && !TextUtils.isEmpty(editText.getText().toString());
     }
 
-    private boolean matchBasicSignUp() {
+    protected boolean matchBasicSignUp() {
         final String NAME_REGEX = getString(R.string.name_regex);
         final String EMAIL_REGEX = getString(R.string.email_regex);
         final String PASSWORD_REGEX = getString(R.string.password_regex);
@@ -108,27 +108,27 @@ public class SignUpActivity extends AppCompatActivity {
         boolean regexValidity = true;
 
         // COMMENT OUT FOR DEBUGGING
-        if(/*!matchRegex(firstNameTxt, NAME_REGEX) ||*/ TextUtils.isEmpty(firstNameTxt.getText().toString())) {
+        if(!matchRegex(firstNameTxt, NAME_REGEX)) {
             firstNameTxt.setError("Invalid First Name");
             regexValidity = false;
         }
 
-        if(/*!matchRegex(surnameTxt, NAME_REGEX) || */TextUtils.isEmpty(surnameTxt.getText().toString())) {
+        if(!matchRegex(surnameTxt, NAME_REGEX)) {
             surnameTxt.setError("Invalid Surname");
             regexValidity = false;
         }
 
-        if(/*!matchRegex(usernameTxt, USERNAME_REGEX) || */TextUtils.isEmpty(usernameTxt.getText().toString())) {
+        if(!matchRegex(usernameTxt, USERNAME_REGEX)) {
             usernameTxt.setError("Invalid Username");
             regexValidity = false;
         }
 
-        if(/*!matchRegex(emailTxt, EMAIL_REGEX) || */TextUtils.isEmpty(emailTxt.getText().toString())) {
+        if(!matchRegex(emailTxt, EMAIL_REGEX)) {
             emailTxt.setError("Invalid Email");
             regexValidity = false;
         }
 
-        if(/*!matchRegex(passwordTxt, PASSWORD_REGEX) || */TextUtils.isEmpty(passwordTxt.getText().toString())) {
+        if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
             passwordTxt.setError("Invalid Password");
             regexValidity = false;
         }

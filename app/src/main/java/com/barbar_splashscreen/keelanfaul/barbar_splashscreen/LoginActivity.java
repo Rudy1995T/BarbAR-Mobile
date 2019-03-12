@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } else {
-                    validationCodeTxt.setVisibility(View.INVISIBLE);
+                    validationCodeTxt.setVisibility(View.GONE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.login_btn), "translationY", -50f);
                     animation.setDuration(100);
                     animation.start();
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 sampleLogin(userName,password);
 
             }
-        });
+        })  ;
 
 
 
@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         validationCodeTxt = findViewById(R.id.login_validation_code);
         checkBox = findViewById(R.id.ifBarberCheckbox);
     }
+
     public void sampleLogin(String userName, String password){
 
         Intent intent;
