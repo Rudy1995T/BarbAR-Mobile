@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
     private List<Haircuts> haircuts;
     SessionManager sessionManager;
     private TextView logoutButton;
+    private LinearLayout linearLayout;
 
 
     @Override
@@ -41,7 +43,6 @@ public class ApprenticeHomeScreenActivity extends AppCompatActivity {
         haircutsRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewHaircuts);
         haircutsRecyclerView.setHasFixedSize(true);
         haircutsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
-
         haircuts = new ArrayList<>();
         addSampleHaircutsToRecyclerView();
 

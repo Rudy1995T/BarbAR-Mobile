@@ -31,6 +31,8 @@ public class BarberStudentsActivity extends AppCompatActivity {
         students = new ArrayList<>();
         addSampleStudentsToRecyclerView();
 
+
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavBar);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(1);

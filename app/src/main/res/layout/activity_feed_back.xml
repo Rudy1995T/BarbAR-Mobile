@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedBackActivity">
+
+    <TextView
+        android:id="@+id/feedbackTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="160dp"
+        android:text="Give yourself Feedback!"
+        android:textColor="@color/colorBlack"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/feedbackTextView2"
+        android:layout_below="@+id/feedbackTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="How do you feel that haircut went?"
+        android:textColor="@color/colorMainGrey"
+        android:textSize="18dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_below="@+id/feedbackTextView2"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:rating="5"
+        android:layout_marginTop="10dp"
+        android:theme="@style/RatingBar"/>
+
+    <EditText
+        android:id="@+id/feedbackComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:ems="15"
+        android:hint="Additional Comments"
+        android:inputType="text"
+        android:padding="11dp" />
+
+    <Button
+        android:id="@+id/sendFeedbackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feedbackComments"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/signupbutton"
+        android:paddingLeft="120dp"
+        android:paddingRight="120dp"
+        android:text="Send Feedback"
+        android:textColor="#fff" />
+
+
+
+
+
+
+
+
+</RelativeLayout>

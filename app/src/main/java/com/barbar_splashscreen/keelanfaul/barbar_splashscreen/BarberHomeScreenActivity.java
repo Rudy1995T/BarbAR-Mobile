@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.support.design.widget.BottomNavigationView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class BarberHomeScreenActivity extends AppCompatActivity {
     private RecyclerView haircutsRecyclerView;
     private HaircutAdapter2 haircutsAdapter2;
     private List<Haircuts> haircuts;
+    private TextView logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,8 @@ public class BarberHomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_barber_home_srceen);
         Bundle bundle = getIntent().getExtras();
 
-        Log.d("BARBER BUNDLE", bundle.getString("sign_up_details"));
-
+       // Log.d("BARBER BUNDLE", bundle.getString("sign_up_details"));
+        logoutButton = findViewById(R.id.logout_button1);
         haircutsRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewHaircuts);
         haircutsRecyclerView.setHasFixedSize(true);
         haircutsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -41,6 +44,16 @@ public class BarberHomeScreenActivity extends AppCompatActivity {
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(BarberHomeScreenActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

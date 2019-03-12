@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">barbAR_SplashScreen</string>
+    <string name="app_name">BarbAR</string>
     <string name="barbar_logo">BarbAR Logo</string>
     <string name="sign_up_message">Sign Up</string>
     <string name="name">Name</string>
@@ -9,7 +9,6 @@
     <string name="shop_signup">Barber Shop Name</string>
 
     <string name="country_prompt">Choose a country</string>
-
 
 
     <!--No spaces, numeric or special characters-->

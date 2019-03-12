@@ -29,7 +29,7 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
     public PostUser(Context context, boolean isTrainee) {
         Log.d("TEST", "LOG");
         this.context = context.getApplicationContext();
-        this.path = isTrainee ? ApprenticeHomeScreenActivity.class : LoginActivity.class;
+        this.path = LoginActivity.class;
     }
 
     @Override

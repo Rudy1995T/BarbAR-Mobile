@@ -1,5 +1,6 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -28,7 +29,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         initViews();
-
         signUpSelect();
         mentorBox();
         apprenticeBox();
@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
             if(matchBasicSignUp()) {
                 final String apiURL = apprenticeCheckBox.isChecked() ? "trainee/signUp" : "barber/signUp";
                 registerUser(getUser(), apiURL);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Trainee made mistake", Toast.LENGTH_SHORT).show();
             }
@@ -117,37 +118,37 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean matchBasicSignUp() {
         final String NAME_REGEX = getString(R.string.name_regex);
-        final String EMAIL_REGEX = getString(R.string.email_regex);
-        final String PASSWORD_REGEX = getString(R.string.password_regex);
-        final String USERNAME_REGEX = getString(R.string.username_regex);
+     //   final String EMAIL_REGEX = getString(R.string.email_regex);
+       // final String PASSWORD_REGEX = getString(R.string.password_regex);
+      //  final String USERNAME_REGEX = getString(R.string.username_regex);
 
         boolean regexValidity = true;
 
         // COMMENT OUT FOR DEBUGGING
-        /*if(!matchRegex(firstNameTxt, NAME_REGEX)) {
-            firstNameTxt.setError("Invalid First Name");
-            regexValidity = false;
-        }
+//        if(!matchRegex(firstNameTxt, NAME_REGEX)) {
+//            firstNameTxt.setError("Invalid First Name");
+//            regexValidity = false;
+//        }
+//
+//        if(!matchRegex(surnameTxt, NAME_REGEX)) {
+//            surnameTxt.setError("Invalid Surname");
+//            regexValidity = false;
+//        }
 
-        if(!matchRegex(surnameTxt, NAME_REGEX)) {
-            surnameTxt.setError("Invalid Surname");
-            regexValidity = false;
-        }
+//        if(!matchRegex(usernameTxt, USERNAME_REGEX)) {
+//            usernameTxt.setError("Invalid Username");
+//            regexValidity = false;
+//        }
 
-        if(!matchRegex(usernameTxt, USERNAME_REGEX)) {
-            usernameTxt.setError("Invalid Username");
-            regexValidity = false;
-        }
+//        if(!matchRegex(emailTxt, EMAIL_REGEX)) {
+//            emailTxt.setError("Invalid Email");
+//            regexValidity = false;
+//        }
 
-        if(!matchRegex(emailTxt, EMAIL_REGEX)) {
-            emailTxt.setError("Invalid Email");
-            regexValidity = false;
-        }
-
-        if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
-            passwordTxt.setError("Invalid Password");
-            regexValidity = false;
-        }*/
+//        if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
+//            passwordTxt.setError("Invalid Password");
+//            regexValidity = false;
+//        }
 
         return regexValidity;
     }
