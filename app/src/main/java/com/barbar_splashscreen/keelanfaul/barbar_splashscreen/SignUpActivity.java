@@ -1,13 +1,19 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +30,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText usernameTxt;
     private EditText emailTxt;
     private EditText passwordTxt;
+
+    private final String TAG = SignUpActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +81,21 @@ public class SignUpActivity extends AppCompatActivity {
      * @param apiURL
      */
     private void registerUser(final User user, String apiURL) {
-
         final String SIGN_UP_URL = getString(R.string.sign_up_url_body) + apiURL;
 
         String postUser = user.jsonFormat();
 
+        ProgressDialog progressDialog = new ProgressDialog(this);
+
+
+        progressDialog.setMessage("Loading... Please Wait");
+        progressDialog.show();
+
         new PostUser(getApplicationContext(), apprenticeCheckBox.isChecked()).execute(SIGN_UP_URL, postUser);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> progressDialog.dismiss(), 3000);
+
     }
 
     private User getUser() {
@@ -109,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
         boolean regexValidity = true;
 
         // COMMENT OUT FOR DEBUGGING
-        if(!matchRegex(firstNameTxt, NAME_REGEX)) {
+        /*if(!matchRegex(firstNameTxt, NAME_REGEX)) {
             firstNameTxt.setError("Invalid First Name");
             regexValidity = false;
         }
@@ -132,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(!matchRegex(passwordTxt, PASSWORD_REGEX)) {
             passwordTxt.setError("Invalid Password");
             regexValidity = false;
-        }
+        }*/
 
         return regexValidity;
     }
