@@ -1,6 +1,7 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,14 @@ public class HaircutHistoryAdapter extends RecyclerView.Adapter<HaircutHistoryAd
         final History haircuts = history.get(i);
         holder.textView.setText(haircuts.getHaircut_name());
         Picasso.get().load(haircuts.getHaircut_image_URL()).placeholder(R.drawable.userlogo).into(holder.circleImageView);
+
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ShowFeedbackActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

@@ -76,7 +76,7 @@ public class StartHaircutActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
-
+        //haircut name not retreiving on API
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         final String URL = "https://barbarservice.azurewebsites.net/api/user/startHaircutSession";
         HashMap<String, String> params = new HashMap<String, String>();

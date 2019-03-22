@@ -2,9 +2,11 @@ package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +33,7 @@ public class ShowHaircutCodeActivity extends AppCompatActivity {
     Handler handler = new Handler();
     private String RandomCode;
     private String sessionID;
+    private ImageView QRCodeImage;
 
 
 
@@ -33,11 +41,21 @@ public class ShowHaircutCodeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_haircut_code);
+        QRCodeImage = findViewById(R.id.QRCodeView);
         RandomCode = getIntent().getExtras().getString("code");
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try{
+            BitMatrix bitMatrix = multiFormatWriter.encode(RandomCode, BarcodeFormat.QR_CODE, 1000, 1000);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            QRCodeImage.setImageBitmap(bitmap);
+        }catch (WriterException e){
+            e.printStackTrace();
 
+        }
 
-        haircutSessionCode = findViewById(R.id.hCodeTextView1);
-        haircutSessionCode.setText(RandomCode);
+//        haircutSessionCode = findViewById(R.id.hCodeTextView1);
+//        haircutSessionCode.setText(RandomCode);
         handler.post(runnableCode);
        // haircutSessionCode.setText(num1);
 

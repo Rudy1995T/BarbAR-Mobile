@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowFeedbackActivity">
+    <TextView
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="Haircut Name Feedback"
+        android:textColor="@color/colorBlack"
+        android:textSize="26dp"
+        android:textStyle="bold"/>
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_below="@+id/view1"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1"
+        android:rating="5"
+        android:layout_marginTop="10dp"
+        android:theme="@style/RatingBar"/>
+
+    <TextView
+        android:id="@+id/hCodeTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Your Comments : "
+        android:textColor="@color/colorMainGrey"
+        android:textSize="18dp" />
+    <TextView
+        android:id="@+id/hCodeTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hCodeTextView2"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        android:text="Barber's Comments : "
+        android:textColor="@color/colorMainGrey"
+        android:textSize="18dp" />
+
+
+</RelativeLayout>

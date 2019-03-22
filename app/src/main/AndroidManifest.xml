@@ -34,7 +34,8 @@
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".StartHaircutActivity" />
         <activity android:name=".ShowHaircutCodeActivity" />
-        <activity android:name=".FeedBackActivity"></activity>
+        <activity android:name=".FeedBackActivity" />
+        <activity android:name=".ShowFeedbackActivity"></activity>
     </application>
 
 </manifest>
