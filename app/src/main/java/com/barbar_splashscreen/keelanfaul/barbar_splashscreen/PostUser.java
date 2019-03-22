@@ -1,10 +1,12 @@
 package com.barbar_splashscreen.keelanfaul.barbar_splashscreen;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -64,7 +66,7 @@ public class PostUser extends AsyncTask <String, Void, JSONObject> {
 
             InputStream inputStream = getStream(LOGIN_URL, json);
 
-//            Log.d("INPUT STREAM", inputStream.toString());
+            Log.d("INPUT STREAM", inputStream.toString());
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
