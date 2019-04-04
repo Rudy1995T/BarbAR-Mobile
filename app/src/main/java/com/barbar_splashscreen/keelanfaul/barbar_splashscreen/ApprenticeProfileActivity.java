@@ -22,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -106,47 +107,48 @@ public class ApprenticeProfileActivity extends AppCompatActivity {
 
     }
     private void addHaircutHistoryToRecyclerView(String id){
-       // getHistory(id);
-        History haircut = new History(5, "High Fade", "https://www.menshairstyletrends.com/wp-content/uploads/2017/12/ambarberia-high-fade-haircuts-textured-quiff-cool-mens-hair-e1515083287963.jpg", "00:30:00");
-        History haircut2 = new History(5, "Medium Fade", "https://www.menshairstylesnow.com/wp-content/uploads/2017/05/Low-Bald-Fade-with-Slicked-Back-Hair-and-Beard.jpg", "00:45:00");
-
-        haircutHistory.add(haircut);
-        haircutHistory.add(haircut2);
-        historyAdapter = new HaircutHistoryAdapter(haircutHistory, getApplicationContext());
-        historyRecyclerView.setAdapter(historyAdapter);
-
+         getHistory(id);
     }
 
-//    public void getHistory(String id) {
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        final String URL = "https://barbarservice.azurewebsites.net/api/Trainee/HaircutInfo";
-//        HashMap<String, String> params = new HashMap<String, String>();
-//        params.put("id", id);
-//
-//        JsonObjectRequest req = new JsonObjectRequest(URL, new JSONObject(params),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//
-//                                JSONObject res = response.getJSONObject("data");
-////                                String sessionID = res.getString("session_id");
-////                                String time_taken = res.getString("time_taken");
-////                                History haircut = new History(Integer.parseInt(sessionID), "High Fade", "https://www.menshairstyletrends.com/wp-content/uploads/2017/12/ambarberia-high-fade-haircuts-textured-quiff-cool-mens-hair-e1515083287963.jpg", time_taken);
-////                                haircutHistory.add(haircut);
-//
-//                            Log.d("Response:", response.toString());
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        requestQueue.add(req);
-//    }
+    public void getHistory(String id) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        final String URL = "https://barbarservice.azurewebsites.net/api/Trainee/HaircutInfo";
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("id", id);
+
+        JsonObjectRequest req = new JsonObjectRequest(URL, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                                JSONArray res = response.getJSONArray("data");
+                                for (int i = 0; i< res.length(); i++){
+                                    JSONObject obj = res.getJSONObject(i);
+                                    String sessionID = obj.getString("session_id");
+                                    String time_taken = obj.getString("time_taken");
+                                    JSONObject haircutDetails = obj.getJSONObject("haircut_details");
+                                    String haircut_url = haircutDetails.getString("haircut_url");
+                                    String haircut_name = haircutDetails.getString("haircut_name");
+                                    History haircut = new History(Integer.parseInt(sessionID), haircut_name, haircut_url, time_taken);
+                                    Log.d("Haircut No:" + i +  " data = ", haircut.toString());
+                                    haircutHistory.add(haircut);
+                                }
+                            historyAdapter = new HaircutHistoryAdapter(haircutHistory, getApplicationContext());
+                            historyRecyclerView.setAdapter(historyAdapter);
+                            Log.d("Response:", response.toString());
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(req);
+    }
 }

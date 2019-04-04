@@ -45,4 +45,14 @@ public class History {
     public void setTime_taken(String time_taken) {
         this.time_taken = time_taken;
     }
+
+    @Override
+    public String toString() {
+        return "History{" +
+                "session_id=" + session_id +
+                ", haircut_name='" + haircut_name + '\'' +
+                ", haircut_image_URL='" + haircut_image_URL + '\'' +
+                ", time_taken='" + time_taken + '\'' +
+                '}';
+    }
 }

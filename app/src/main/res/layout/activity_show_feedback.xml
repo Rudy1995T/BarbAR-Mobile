@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ShowFeedbackActivity">
     <TextView
-        android:id="@+id/view1"
+        android:id="@+id/feedbackHaircutName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="25dp"
         android:text="Haircut Name Feedback"
         android:textColor="@color/colorBlack"
         android:textSize="26dp"
@@ -20,7 +20,7 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_below="@+id/view1"
+        android:layout_below="@+id/feedbackHaircutName"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,18 +38,44 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="Your Comments : "
-        android:textColor="@color/colorMainGrey"
+        android:textColor="@color/colorBlack"
         android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/apprenticeComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hCodeTextView2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Apprentice Comments : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        android:textColor="@color/colorMainGrey"
+        android:textSize="18dp"
+        android:layout_marginRight="20dp"/>
+
     <TextView
         android:id="@+id/hCodeTextView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hCodeTextView2"
-        android:layout_marginTop="150dp"
+        android:layout_below="@+id/apprenticeComments"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:text="Barber's Comments : "
-        android:textColor="@color/colorMainGrey"
+        android:textColor="@color/colorBlack"
         android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/barberComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hCodeTextView3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Barber Comments : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        android:textColor="@color/colorMainGrey"
+        android:textSize="18dp"
+        android:layout_marginRight="20dp"/>
+
 
 
 </RelativeLayout>

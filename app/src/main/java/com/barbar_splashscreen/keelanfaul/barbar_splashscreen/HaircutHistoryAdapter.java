@@ -42,6 +42,9 @@ public class HaircutHistoryAdapter extends RecyclerView.Adapter<HaircutHistoryAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ShowFeedbackActivity.class);
+                intent.putExtra("session_id",   haircuts.getSession_id());
+                intent.putExtra("haircut_name",haircuts.getHaircut_name());
+                intent.putExtra("time_taken",haircuts.getTime_taken());
                 context.startActivity(intent);
             }
         });
